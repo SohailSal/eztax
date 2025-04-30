@@ -12,8 +12,26 @@ class NoticeController extends Controller
 
     public function index()
     {
+
+        $notices = null;
+        $search = null;
+        // if($request->input('search')){
+        //     $account = null;
+        //     $id = null;
+        //     if(Account::where('head_of_account', 'LIKE', '%' . $request->input('search') . '%')->first()) {
+        //         $account = Account::where('head_of_account', 'LIKE', '%' . $request->input('search') . '%')->first();
+        //         $id = $account->id;
+        //     }
+        //     $invoices = Invoice::where('ref', 'LIKE', '%' . $request->input('search') . '%')->orWhere('account_id', '=', $id )->orderBy('created_at', 'DESC')->paginate(10)->appends(request()->query());
+        //     $search = $request->input('search');
+        // }
+        // else{
+        //     $invoices = Invoice::orderBy('created_at', 'DESC')->paginate(10)->appends(request()->query());
+        // }
+        // return view('invoices.index', compact('invoices','search'));
+
         $notices = Notice::all();
-        return view('notices.index', compact('notices'));
+        return view('notices.index', compact('notices','search'));
     }
 
     public function create()

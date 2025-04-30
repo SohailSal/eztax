@@ -4,7 +4,7 @@
 
 <div class="card m-4">
   <div class="card-header">
-    <h4>Create Client</h4>
+    <h4>Create Notice</h4>
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -18,10 +18,17 @@
     @endif
     <form method="post" action="{{ route('notices.store') }}" class="prevent-multi">
         @csrf
+
         <div class="form-group">
-            <label for="client_id">Client</label>
-            <input type="text" class="form-control" name="client_id"/>
+              <label for="client_id">Client:</label>
+              <select class="form-control" name="client_id" style="width:300px;">
+                  <option value=''>Please select client</option>
+                  @foreach (App\Models\Client::all() as $client)
+                  <option value="{{$client->id}}">{{$client->name}}</option>
+                  @endforeach
+              </select>
         </div>
+
         <div class="form-group">
             <label for="tax_authority">Tax Authority</label>
             <input type="text" class="form-control" name="tax_authority"/>

@@ -8,6 +8,14 @@
             </div>
             <div class="p-2">
                 <a class="btn btn-primary" href="{{ route('notices.create') }}">Create New Notice</a>
+
+                <form method="get" action="{{ route('notices') }}">
+                @csrf
+                <div class="float-right btn-group">
+                    <input type="text" class="form-control" name="search" value="{{$search}}"/>
+                    <button class="btn btn-sm btn-primary search">Search</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>

@@ -45,11 +45,14 @@
         </div>
 
         <div class="form-group">
-          <label for="notice">File:</label>
-          <input type="file" class="form-control" name="notice" id="notice">
+          <label for="reply">Reply:</label>
+          <input type="file" class="form-control" name="reply">
         </div>
 
-
+        <div class="form-group">
+          <label for="order">Order:</label>
+          <input type="file" class="form-control" name="order">
+        </div>
         <button type="submit" class="btn btn-secondary m-2 prevent-multi-submit">Submit</button>
     </form>
   </div>

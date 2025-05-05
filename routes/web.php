@@ -59,5 +59,8 @@ Route::get('notices/{notice}/edit', [NoticeController::class, 'edit'])
 Route::put('notices/{notice}', [NoticeController::class, 'update'])
     ->name('notices.update')->middleware('auth');
 
+Route::put('notices/change/{notice}', [NoticeController::class, 'change'])
+    ->name('notices.change')->middleware('auth');
+
 Route::delete('notices/{notice}', [NoticeController::class, 'destroy'])
     ->name('notices.destroy')->middleware('auth');

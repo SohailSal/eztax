@@ -94,24 +94,41 @@ class NoticeController extends Controller
         );
 
 
-	    if(Request::file('reply')){
+        if(Request::file('reply')){
             $name = time() . '_' . Request::file('reply')->getClientOriginalName();
             $path = Request::file('reply')->storeAs('uploads', $name, 'public');
-			$notice->update([
-				'reply_name' => $name,
-				'reply_path' => $path,
-			]);
-		}
+            $notice->update([
+                'reply_name' => $name,
+                'reply_path' => $path,
+            ]);
+        }
 
-	    if(Request::file('order')){
+        if(Request::file('order')){
             $name = time() . '_' . Request::file('order')->getClientOriginalName();
             $path = Request::file('order')->storeAs('uploads', $name, 'public');
-			$notice->update([
-				'order_name' => $name,
-				'order_path' => $path,
-			]);
-		}
+            $notice->update([
+                'order_name' => $name,
+                'order_path' => $path,
+            ]);
+        }
         return Redirect::route('notices')->with('success', 'Notice updated.');
+    }
+
+    public function change(Notice $notice)
+    {
+        $notice->update(
+            Request::validate([
+            'status' => ['required'],
+            ])
+        );
+
+        $ch = !$notice->status;
+        
+        $notice->update([
+            'status' => $ch,
+        ]);
+
+        return Redirect::route('notices')->with('success', 'Status updated.');
     }
 
     public function destroy(Notice $notice)

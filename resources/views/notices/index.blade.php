@@ -94,6 +94,18 @@
             <td>{{ $notice->tax_authority }}</td>
             <td>{{ $notice->notice_path }}</td>
             <td class="d-flex justify-content-around">
+                <strong>Completed:</strong>
+                    @if($notice->status =='0')
+                    No
+                    @else
+                    Yes
+                    @endif
+                <form method="POST" action="{{ route('notices.change', $notice->id) }}">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="status" value="{{$notice->status}}">
+                    <button class="btn btn-primary" type="submit">Change status</button>
+                </form>
                 <a class="btn btn-secondary" href="{{ route('notices.edit', $notice->id) }}">Edit</a>
                 <form action="{{ route('notices.destroy', $notice->id) }}" method="POST">
                     @csrf

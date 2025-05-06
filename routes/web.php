@@ -24,7 +24,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-
 Route::get('clients', [ClientController::class, 'index'])
     ->name('clients')->middleware('auth');
 
@@ -64,3 +63,6 @@ Route::put('notices/change/{notice}', [NoticeController::class, 'change'])
 
 Route::delete('notices/{notice}', [NoticeController::class, 'destroy'])
     ->name('notices.destroy')->middleware('auth');
+
+Route::get('/calculator', [App\Http\Controllers\CalculatorController::class, 'index'])
+    ->name('calculator')->middleware('auth');

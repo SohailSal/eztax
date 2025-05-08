@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\CalculatorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,5 +65,9 @@ Route::put('notices/change/{notice}', [NoticeController::class, 'change'])
 Route::delete('notices/{notice}', [NoticeController::class, 'destroy'])
     ->name('notices.destroy')->middleware('auth');
 
-Route::get('/calculator', [App\Http\Controllers\CalculatorController::class, 'index'])
+Route::get('/calculator', [CalculatorController::class, 'index'])
     ->name('calculator')->middleware('auth');
+
+Route::post('/getSalary', [CalculatorController::class, 'getSalary'])
+    ->name('getSalary')->middleware('auth');
+
